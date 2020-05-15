@@ -4,27 +4,64 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE)
+```
+
+
+```{r eval = T}
+# Add dependency
+htmltools::htmlDependency(name = "fullcalendar",
+                          version = "4.4.0",
+                          src = "htmlwidgets/lib/fullcalendar-4.4.0/core/",
+                          script = "main.min.js",
+                          stylesheet = "main.min.css")
+
+
+htmltools::htmlDependency(name = "interaction",
+                          version = "4.4.0",
+                          src = "htmlwidgets/lib/fullcalendar-4.4.0/interaction/",
+                          script = "main.min.js",
+                          stylesheet = "main.min.css")
+
+
+
+
 ```
 
 
 ```{r}
 # library(fullcalendR)
-pkgload::load_all()
+pkgload::load_all() 
 library(shiny)
 
-data = data.frame(title = paste("Event", 1:3),
-                  start = c("2020-05-01", "2020-05-01", "2020-05-15"),
-                  end = c("2020-05-02", "2020-05-04", "2020-05-18"),
-                  color = c("red", "blue", "green"))
+data <- data.frame(title = paste("Event", 1:4),
+                   start = c("2020-05-03 00:00", "2020-05-01", "2020-05-03", "2020-05-15"),
+                   end = c("2020-05-05 01:00", "2020-05-04", "2020-05-03", "2020-05-18"),
+                   color = c("red", "blue", "yellow", "green"),
+                   id = c("event_id1", "event_id2", "event_id3", "event_id4"),
+                   className = c("vacation", "academic", "holiday", "vacation"))
 
 # taglist(
 fullcalendar(
   data = data,
-  # settings = list(selectable = TRUE,
-  #                 dayClick = htmlwidgets::JS(
-  #                   'function(date) {alert("click" + date.format());}')
-  #                 ),
+  settings = list(selectable = TRUE,
+                  # dateClick = htmlwidgets::JS(
+                  #   'function(info) {',
+                  #   'alert("selected " + info.dateStr);}'
+                  # ),
+                  # select = htmlwidgets::JS(
+                  #   'function(info) {',
+                  #   'alert("selected " + info.startStr + " to " + info.endStr);}'
+                  # ),
+                  eventClick = htmlwidgets::JS(
+                    'function(info) {',
+                    'console.log(info.event.classNames)',
+                    'alert("clicked event");}'
+                  ),
+                  eventLimit = TRUE,
+                  eventLimitClick = "popover"
+  ),
   elementId = "calendar")
 # )
 ```
