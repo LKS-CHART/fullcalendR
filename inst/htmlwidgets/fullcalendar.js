@@ -27,9 +27,14 @@ HTMLWidgets.widget({
           //  Event Interactions
           eventClick: x.eventClick,
 
-          // Event popover
           eventLimit: x.eventLimit,
-          eventLimitClick: x.eventLimitClick
+          eventLimitClick: x.eventLimitClick,
+
+          editable: x.editable,
+          rendering: x.rendering,
+
+          // Non-standard properties
+          resident: x.resident
         });
 
         calendar.render();
