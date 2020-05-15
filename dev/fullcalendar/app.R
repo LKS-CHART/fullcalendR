@@ -14,6 +14,19 @@ pkgload::load_all()
 # Define UI for application that draws a histogram
 ui <- fluidPage(
 
+    tags$head(
+        tags$style(HTML("
+      #box {
+               position: fixed;
+    top: 5vw;
+    left: 35vw;
+    right: 5vw;
+    bottom: 5vw;
+      }
+
+    "))
+    ),
+
     # Application title
     titlePanel("Old Faithful Geyser Data"),
 
@@ -38,7 +51,9 @@ ui <- fluidPage(
 
         # Show a plot of the generated distribution
         mainPanel(
-            fullcalendarOutput("calendar")
+            div(id = "box",
+                fullcalendarOutput("calendar")
+            )
         )
     )
 )
@@ -61,14 +76,14 @@ server <- function(input, output, session) {
             data = data,
             settings = list(selectable = TRUE,
                             dateClick = htmlwidgets::JS(
-                              'function(info) {',
-                              'Shiny.setInputValue("start_date", info.dateStr)',
-                              'Shiny.setInputValue("end_date", info.dateStr);}'
+                                'function(info) {',
+                                'Shiny.setInputValue("start_date", info.dateStr)',
+                                'Shiny.setInputValue("end_date", info.dateStr);}'
                             ),
                             select = htmlwidgets::JS(
-                              'function(info) {',
-                              'Shiny.setInputValue("start_date", info.startStr)',
-                              'Shiny.setInputValue("end_date", info.endStr);}'
+                                'function(info) {',
+                                'Shiny.setInputValue("start_date", info.startStr)',
+                                'Shiny.setInputValue("end_date", info.endStr);}'
                             ),
                             eventClick = htmlwidgets::JS(
                                 'function(info) {',

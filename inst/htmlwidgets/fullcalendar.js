@@ -14,6 +14,9 @@ HTMLWidgets.widget({
         var calendar = new FullCalendar.Calendar(el, {
           plugins: [ 'dayGrid' , 'interaction'],
 
+          // Sizing
+          height: 'parent',
+
           // Object containing all events
           events: x.events,
 
