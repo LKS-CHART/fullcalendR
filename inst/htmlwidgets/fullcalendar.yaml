@@ -1,7 +1,26 @@
 # (uncomment to add a dependency)
-# dependencies:
-#  - name:
-#    version:
-#    src:
-#    script:
-#    stylesheet:
+dependencies:
+ - name: fullcalendar
+   version: 4.4.0
+   src: htmlwidgets/lib/fullcalendar-4.4.0/core
+   script:
+    - main.min.js
+   stylesheet:
+    - main.min.css
+ - name: dayGrid
+   version: 4.4.0
+   src: htmlwidgets/lib/fullcalendar-4.4.0/daygrid
+   script:
+    - main.min.js
+   stylesheet:
+    - main.min.css
+ - name: interaction
+   version: 4.4.0
+   src: htmlwidgets/lib/fullcalendar-4.4.0/interaction
+   script:
+    - main.min.js
+ - name: moment
+   version: 4.4.0
+   src: htmlwidgets/lib/fullcalendar-4.4.0/moment
+   script:
+    - main.min.js
