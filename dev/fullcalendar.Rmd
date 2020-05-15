@@ -32,7 +32,7 @@ htmltools::htmlDependency(name = "interaction",
 
 ```{r}
 # library(fullcalendR)
-pkgload::load_all()
+pkgload::load_all() 
 library(shiny)
 
 data <- data.frame(title = paste("Event", 1:4),
@@ -56,7 +56,7 @@ fullcalendar(
                   # ),
                   eventClick = htmlwidgets::JS(
                     'function(info) {',
-                    'console.log(info.event)',
+                    'console.log(info.event.classNames)',
                     'alert("clicked event");}'
                   ),
                   eventLimit = TRUE,

@@ -12,7 +12,7 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
         var calendar = new FullCalendar.Calendar(el, {
-          plugins: [ 'dayGrid' , 'interaction', ''],
+          plugins: [ 'dayGrid' , 'interaction'],
 
           // Object containing all events
           events: x.events,
