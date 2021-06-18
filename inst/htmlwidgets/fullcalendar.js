@@ -13,33 +13,25 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         var calendar = new FullCalendar.Calendar(el, {
           plugins: [ 'dayGrid' , 'interaction'],
-
           // Sizing
           height: 'parent',
-
           // Object containing all events
           events: x.events,
-
+          // Set the initial date
+          defaultDate: x.defaultDate,
           // Interactions with calendar
           selectable: x.selectable,
-
           dateClick: x.dateClick,
-
           select: x.select,
-
           //  Event Interactions
           eventClick: x.eventClick,
-
           eventLimit: x.eventLimit,
           eventLimitClick: x.eventLimitClick,
-
           editable: x.editable,
           rendering: x.rendering,
-
           // Non-standard properties
           resident: x.resident
         });
-
         calendar.render();
       },
 
